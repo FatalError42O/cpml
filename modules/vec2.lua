@@ -389,6 +389,7 @@ local vec_enum = {
 	"y"
 }
 vec2_mt.__index    = function(vec, i)
+	if vec2[i] then return vec2[i] end
 	if type(i) == "number" and i < 3 then
 		return vec[vec_enum[i]]
 	end

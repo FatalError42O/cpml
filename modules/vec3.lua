@@ -379,6 +379,7 @@ local vec_enum = {
 	"z"
 }
 vec3_mt.__index    = function(vec, i)
+	if vec3[i] then return vec3[i] end
 	if type(i) == "number" and i < 4 then
 		return vec[vec_enum[i]]
 	end
