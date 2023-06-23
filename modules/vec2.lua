@@ -383,7 +383,16 @@ function vec2.to_string(a)
 	return string.format("(%+0.3f,%+0.3f)", a.x, a.y)
 end
 
-vec2_mt.__index    = vec2
+--provide basic compatibility with other vector libraries
+local vec_enum = {
+	"x",
+	"y"
+}
+vec2_mt.__index    = function(vec, i)
+	if type(i) == "number" and i < 3 then
+		return vec[vec_enum[i]]
+	end
+end
 vec2_mt.__tostring = vec2.to_string
 
 function vec2_mt.__call(_, x, y)

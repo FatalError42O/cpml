@@ -40,7 +40,11 @@ local cpml = {
 	_VERSION = "1.2.9",
 	_DESCRIPTION = "Cirno's Perfect Math Library: Just about everything you need for 3D games. Hopefully."
 }
-
+cpml.vec_enum = {
+	"x",
+	"y",
+	"z"
+}
 local files = {
 	"bvh",
 	"color",

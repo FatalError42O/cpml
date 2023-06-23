@@ -372,8 +372,17 @@ end
 function vec3.to_string(a)
 	return string.format("(%+0.3f,%+0.3f,%+0.3f)", a.x, a.y, a.z)
 end
-
-vec3_mt.__index    = vec3
+--provide basic compatibility with other vector libraries
+local vec_enum = {
+	"x",
+	"y",
+	"z"
+}
+vec3_mt.__index    = function(vec, i)
+	if type(i) == "number" and i < 4 then
+		return vec[vec_enum[i]]
+	end
+end
 vec3_mt.__tostring = vec3.to_string
 
 function vec3_mt.__call(_, x, y, z)
